@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GivingHands</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+      .navyy a:hover {
+       color: var(--accent);
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-0 shadow-sm navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html" style="color: #F9B208; font-weight: bold; font-size: 30px; ">Giving Hands</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item navyy"><a class="nav-link " href="./index.html">Home</a></li>
+                    <li class="nav-item navyy"><a class="nav-link" href="./views/aboutus.html">About Us</a></li>
+                    <li class="nav-item navyy"><a class="nav-link" href="./views/contact-us.html">Contact</a></li>
+                    <li class="nav-item navyy"><a class="nav-link" href="./views/testomonial.html">Testimonials</a></li>
+                    <li class="nav-item navyy "><a class="nav-link" href="./views/login.html" id="dylog">Login</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="text-white text-center py-5" style="background-image: url('images/tree1.jpg'); background-size: cover; background-position: center; height: 400px;">
+        <div class="container h-100 d-flex flex-column justify-content-center align-items-start">
+            <h1 class="header-title">Giving Hands</h1>
+            <p class="header-subtitle">Join us in spreading kindness during the holy month</p>
+            <a href="../views/login.html" class="btn btn-light header-button">Get Involved</a>
+        </div>
+    </header>
+
+    <!-- Volunteer Opportunities -->
+    <section id="opportunities" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Volunteer Opportunities</h2>
+            <div class="row" id="opportunitiesContainer">
+                <!-- Cards will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Volunteer in Ramadan -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Why Volunteer in Ramadan</h2>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-hand-holding-heart fa-3x mb-3" style="color: #F9B208;"></i>
+                    <h3>Increase in Rewards</h3>
+                    <p>Good deeds are multiplied many times during this blessed month.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-users fa-3x mb-3" style="color: #F9B208;"></i>
+                    <h3>Community Unity</h3>
+                    <p>Strengthen bonds within your community through collective service.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fas fa-star-and-crescent fa-3x mb-3" style="color: #F9B208;"></i>
+                    <h3>Spiritual Growth</h3>
+                    <p>Enhance your spiritual journey through acts of kindness and charity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2025 Ramadan Volunteer Hub. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="./js/charities.js"></script>
+    <script src="./js/home.js"></script>
+
+
+    <script>
+        // Ramadan countdown timer
+        function updateCountdown() {
+            // Set the date we're counting down to (example: next Ramadan)
+            // You'll need to update this date each year
+            const ramadanDate = new Date("March 10, 2026 00:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = ramadanDate - now;
+            
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Display the result
+            document.getElementById("days").textContent = days.toString().padStart(2, '0');
+            document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+            
+            // When countdown is over, show message
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.querySelector(".countdown-container").innerHTML = "<h2>Ramadan Mubarak!</h2><p>The blessed month has arrived.</p>";
+            }
+        }
+        
+        // Update countdown every second
+        updateCountdown();
+        const countdownTimer = setInterval(updateCountdown, 1000);
+        
+        // Prayer times API integration
+        function fetchPrayerTimes() {
+            // This is a placeholder for prayer times API integration
+            // In real implementation, you would fetch from an API like Aladhan API
+            const prayerTimes = {
+                fajr: "4:35 AM",
+                sunrise: "6:12 AM",
+                dhuhr: "12:30 PM",
+                asr: "3:45 PM",
+                maghrib: "6:48 PM",
+                isha: "8:15 PM"
+            };
+            
+            // Create prayer times display
+            const prayerTimesContainer = document.getElementById("prayer-times-container");
+            prayerTimesContainer.innerHTML = `
+                <div class="prayer-times-grid">
+                    <div class="prayer-time">
+                        <h3>Fajr</h3>
+                        <p>${prayerTimes.fajr}</p>
+                    </div>
+                    <div class="prayer-time">
+                        <h3>Sunrise</h3>
+                        <p>${prayerTimes.sunrise}</p>
+                    </div>
+                    <div class="prayer-time">
+                        <h3>Dhuhr</h3>
+                        <p>${prayerTimes.dhuhr}</p>
+                    </div>
+                    <div class="prayer-time">
+                        <h3>Asr</h3>
+                        <p>${prayerTimes.asr}</p>
+                    </div>
+                    <div class="prayer-time">
+                        <h3>Maghrib</h3>
+                        <p>${prayerTimes.maghrib}</p>
+                    </div>
+                    <div class="prayer-time">
+                        <h3>Isha</h3>
+                        <p>${prayerTimes.isha}</p>
+                    </div>
+                </div>
+                <div class="iftar-time">
+                    <h3>Today's Iftar Time</h3>
+                    <p>${prayerTimes.maghrib}</p>
+                </div>
+            `;
+        }
+        
+        // Load prayer times when page loads
+        document.addEventListener("DOMContentLoaded", fetchPrayerTimes);
+        
+        // Form submission
+        const signupForm = document.getElementById("signup-form");
+        signupForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const opportunity = document.getElementById("opportunity").value;
+            const availability = document.getElementById("availability").value;
+            
+            // Here you would typically send this data to a server
+            // For this example, we'll just show a confirmation message
+            alert(`Thank you ${name} for signing up to volunteer! We'll contact you shortly to confirm your participation.`);
+            
+            // Reset form
+            signupForm.reset();
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Dynamic available spots counter
+        function updateAvailableSpots() {
+            const opportunityCards = document.querySelectorAll('.opportunity-card');
+            
+            opportunityCards.forEach(card => {
+                const spotsElement = card.querySelector('.spots');
+                let spots = parseInt(spotsElement.textContent);
+                
+                // Simulate random signups
+                if (Math.random() > 0.8 && spots > 0) {
+                    spots--;
+                    spotsElement.textContent = spots + " spots left";
+                    
+                    // Add urgency message when spots are low
+                    if (spots <= 3) {
+                        spotsElement.style.color = "#ff4d4d";
+                    }
+                }
+            });
+        }
+        
+        // Update available spots every 30 seconds
+        setInterval(updateAvailableSpots, 30000);
+        
+        // Add animation to features on scroll
+        const features = document.querySelectorAll('.feature');
+        
+        function checkScroll() {
+            features.forEach(feature => {
+                const featurePosition = feature.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (featurePosition < screenPosition) {
+                    feature.style.opacity = "1";
+                    feature.style.transform = "translateY(0)";
+                }
+            });
+        }
+        
+        // Initial styles for features
+        features.forEach(feature => {
+            feature.style.opacity = "0";
+            feature.style.transform = "translateY(20px)";
+            feature.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+        });
+        
+        // Check scroll position when page loads and on scroll
+        window.addEventListener('load', checkScroll);
+        window.addEventListener('scroll', checkScroll);
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+    });
+
+});
+
+        
+    </script>
+
+    <script src="./js/charities.js"></script>
+    <script src="./js/home.js"></script>
+
+</body>
+</html>
